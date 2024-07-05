@@ -1,10 +1,7 @@
 import { existsSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { expect, test } from '@playwright/test';
 import { createRsbuild, loadConfig } from '@rsbuild/core';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 test('should allow to configure split chunks with UMD plugin', async ({
 	page,
@@ -17,10 +14,8 @@ test('should allow to configure split chunks with UMD plugin', async ({
 	await rsbuild.build();
 	const { server, urls } = await rsbuild.preview();
 
-	expect(existsSync(join(__dirname, 'dist/static/js/index.js'))).toBeTruthy();
-	expect(
-		existsSync(join(__dirname, 'dist/static/js/lib-react.js')),
-	).toBeTruthy();
+	expect(existsSync(join(__dirname, 'dist/index.js'))).toBeTruthy();
+	expect(existsSync(join(__dirname, 'dist/lib-react.js'))).toBeTruthy();
 
 	// Browser env
 	await page.goto(urls[0]);

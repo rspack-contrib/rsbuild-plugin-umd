@@ -1,5 +1,5 @@
 import { defineConfig } from '@rsbuild/core';
-import { pluginUmd } from '@rsbuild/plugin-umd';
+import { pluginUmd } from '../../dist';
 import { getRandomPort } from '../helper';
 
 export default defineConfig({
