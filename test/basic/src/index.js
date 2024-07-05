@@ -1,1 +1,3 @@
-window.test = 1;
+export function double(a) {
+	return a * 2;
+}

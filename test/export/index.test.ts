@@ -8,7 +8,9 @@ import { createRsbuild, loadConfig } from '@rsbuild/core';
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-test('should generate UMD bundle correctly', async ({ page }) => {
+test('should generate UMD bundle with default export correctly', async ({
+	page,
+}) => {
 	const rsbuild = await createRsbuild({
 		cwd: __dirname,
 		rsbuildConfig: (await loadConfig({ cwd: __dirname })).content,
@@ -27,7 +29,7 @@ test('should generate UMD bundle correctly', async ({ page }) => {
 		join(__dirname, 'dist/package.json'),
 		JSON.stringify({ type: 'commonjs' }),
 	);
-	const { double } = require('./dist/index.js');
+	const double = require('./dist/index.js');
 	expect(double(1)).toEqual(2);
 
 	await server.close();
