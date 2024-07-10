@@ -118,6 +118,16 @@ export default {
 };
 ```
 
+If you need filename hash, enable the [output.filenameHash](https://rsbuild.dev/config/output/filename-hash) option:
+
+```js
+export default {
+  output: {
+    filenameHash: true,
+  },
+};
+```
+
 ## Debugging in the Browser
 
 You can run the `rsbuild dev` command to debug UMD outputs in the browser.
