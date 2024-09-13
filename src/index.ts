@@ -19,35 +19,36 @@ export const pluginUmd = (options: PluginUmdOptions): RsbuildPlugin => ({
 	setup(api) {
 		api.modifyEnvironmentConfig((config, { mergeEnvironmentConfig, name }) => {
 			const userConfig = api.getRsbuildConfig('original');
+			const userEnvConfig = userConfig.environments?.[name];
 
 			// user environment config > user common config > umd default config
 			return mergeEnvironmentConfig(config, {
 				output: {
 					distPath: {
 						js:
-							userConfig.environments?.[name]?.output?.distPath?.js ??
+							userEnvConfig?.output?.distPath?.js ??
 							userConfig.output?.distPath?.js ??
 							'',
 						css:
-							userConfig.environments?.[name]?.output?.distPath?.css ??
+							userEnvConfig?.output?.distPath?.css ??
 							userConfig.output?.distPath?.css ??
 							'',
 					},
 					filenameHash:
-						userConfig.environments?.[name]?.output?.filenameHash ??
+						userEnvConfig?.output?.filenameHash ??
 						userConfig.output?.filenameHash ??
 						false,
 				},
 				html: {
 					// allows to test the UMD bundle in the browser
 					scriptLoading:
-						userConfig.environments?.[name]?.html?.scriptLoading ??
+						userEnvConfig?.html?.scriptLoading ??
 						userConfig.html?.scriptLoading ??
 						'blocking',
 				},
 				tools: {
 					htmlPlugin:
-						userConfig.environments?.[name]?.tools?.htmlPlugin ??
+						userEnvConfig?.tools?.htmlPlugin ??
 						userConfig.tools?.htmlPlugin ??
 						(process.env.NODE_ENV === 'production' ? false : undefined),
 				},
@@ -56,8 +57,7 @@ export const pluginUmd = (options: PluginUmdOptions): RsbuildPlugin => ({
 						// UMD outputs are usually distributed via a single <script> tag,
 						// so we use `all-in-one` as the default chunk splitting strategy.
 						strategy:
-							userConfig.environments?.[name]?.performance?.chunkSplit
-								?.strategy ??
+							userEnvConfig?.performance?.chunkSplit?.strategy ??
 							userConfig.performance?.chunkSplit?.strategy ??
 							'all-in-one',
 					},
