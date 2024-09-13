@@ -1,6 +1,6 @@
 {
 	"name": "@rsbuild/plugin-umd",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"repository": "https://github.com/rspack-contrib/rsbuild-plugin-umd",
 	"license": "MIT",
 	"type": "module",
@@ -34,8 +34,8 @@
 	"devDependencies": {
 		"@biomejs/biome": "^1.8.3",
 		"@playwright/test": "^1.44.1",
-		"@rsbuild/core": "^1.0.1-beta.10",
-		"@rsbuild/plugin-react": "1.0.1-beta.10",
+		"@rsbuild/core": "^1.0.2",
+		"@rsbuild/plugin-react": "1.0.1",
 		"@types/node": "^20.14.1",
 		"nano-staged": "^0.8.0",
 		"playwright": "^1.44.1",
@@ -46,7 +46,7 @@
 		"typescript": "^5.5.2"
 	},
 	"peerDependencies": {
-		"@rsbuild/core": "1.x || ^1.0.1-beta.0"
+		"@rsbuild/core": "1.x"
 	},
 	"peerDependenciesMeta": {
 		"@rsbuild/core": {
