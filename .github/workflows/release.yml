@@ -1,6 +1,8 @@
+# This action will publish the package to npm and create a GitHub release.
 name: Release
 
 on:
+  # Run `npm run bump` to bump the version and create a git tag.
   push:
     tags:
       - "v*"
