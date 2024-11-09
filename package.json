@@ -16,8 +16,8 @@
 	"types": "./dist/index.d.ts",
 	"files": ["dist"],
 	"scripts": {
-		"build": "tsup",
-		"dev": "tsup --watch",
+		"build": "rslib build",
+		"dev": "rslib build --watch",
 		"lint": "biome check .",
 		"lint:write": "biome check . --write",
 		"prepare": "simple-git-hooks && npm run build",
@@ -37,6 +37,7 @@
 		"@playwright/test": "^1.44.1",
 		"@rsbuild/core": "^1.0.2",
 		"@rsbuild/plugin-react": "^1.0.1",
+		"@rslib/core": "^0.0.16",
 		"@types/node": "^20.14.1",
 		"nano-staged": "^0.8.0",
 		"playwright": "^1.44.1",
