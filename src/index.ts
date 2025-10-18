@@ -21,18 +21,21 @@ export const pluginUmd = (options: PluginUmdOptions): RsbuildPlugin => ({
       const userConfig = api.getRsbuildConfig('original');
       const userEnvConfig = userConfig.environments?.[name];
 
+      const userDistPath = {
+        ...(typeof userConfig.output?.distPath === 'string'
+          ? {}
+          : userConfig.output?.distPath),
+        ...(typeof userEnvConfig?.output?.distPath === 'string'
+          ? {}
+          : userEnvConfig?.output?.distPath),
+      };
+
       // user environment config > user common config > umd default config
       return mergeEnvironmentConfig(config, {
         output: {
           distPath: {
-            js:
-              userEnvConfig?.output?.distPath?.js ??
-              userConfig.output?.distPath?.js ??
-              '',
-            css:
-              userEnvConfig?.output?.distPath?.css ??
-              userConfig.output?.distPath?.css ??
-              '',
+            js: userDistPath.js ?? '',
+            css: userDistPath.css ?? '',
           },
           filenameHash:
             userEnvConfig?.output?.filenameHash ??
