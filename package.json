@@ -1,62 +1,64 @@
 {
-	"name": "@rsbuild/plugin-umd",
-	"version": "1.0.5",
-	"repository": "https://github.com/rspack-contrib/rsbuild-plugin-umd",
-	"license": "MIT",
-	"type": "module",
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
-		}
-	},
-	"main": "./dist/index.js",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
-	"files": ["dist"],
-	"scripts": {
-		"build": "rslib build",
-		"dev": "rslib build --watch",
-		"lint": "biome check .",
-		"lint:write": "biome check . --write",
-		"prepare": "simple-git-hooks && npm run build",
-		"test": "playwright test",
-		"bump": "npx bumpp"
-	},
-	"simple-git-hooks": {
-		"pre-commit": "npx nano-staged"
-	},
-	"nano-staged": {
-		"*.{js,jsx,ts,tsx,mjs,cjs}": [
-			"biome check --write --no-errors-on-unmatched"
-		]
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@playwright/test": "^1.55.1",
-		"@rsbuild/core": "^1.5.13",
-		"@rsbuild/plugin-react": "^1.4.1",
-		"@rslib/core": "^0.15.0",
-		"@types/node": "^22.18.8",
-		"nano-staged": "^0.8.0",
-		"playwright": "^1.55.1",
-		"react": "^19.1.1",
-		"react-dom": "^19.1.1",
-		"simple-git-hooks": "^2.13.1",
-		"typescript": "^5.9.3"
-	},
-	"peerDependencies": {
-		"@rsbuild/core": "1.x"
-	},
-	"peerDependenciesMeta": {
-		"@rsbuild/core": {
-			"optional": true
-		}
-	},
-	"packageManager": "pnpm@10.17.1",
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	}
+  "name": "@rsbuild/plugin-umd",
+  "version": "1.0.5",
+  "repository": "https://github.com/rspack-contrib/rsbuild-plugin-umd",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "lint": "biome check .",
+    "lint:write": "biome check . --write",
+    "prepare": "simple-git-hooks && npm run build",
+    "test": "playwright test",
+    "bump": "npx bumpp"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx nano-staged"
+  },
+  "nano-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "biome check --write --no-errors-on-unmatched"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@playwright/test": "^1.55.1",
+    "@rsbuild/core": "^1.5.13",
+    "@rsbuild/plugin-react": "^1.4.1",
+    "@rslib/core": "^0.15.0",
+    "@types/node": "^22.18.8",
+    "nano-staged": "^0.8.0",
+    "playwright": "^1.55.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "1.x"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
+  },
+  "packageManager": "pnpm@10.17.1",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
